@@ -11,12 +11,15 @@ import Cocoa
 class ViewController: NSViewController, NSCollectionViewDataSource, NSCollectionViewDelegate {
 
     
+    @IBOutlet var testImageView: NSImageView!
     @IBOutlet var collectionView: NSCollectionView!
     
     @IBOutlet var imangesContainer: NSImageView!
     
     var itemsBeingDragged : Set<IndexPath>?
     var photos = [URL]()
+    
+    var selectedImage: PhotoLayer?
     
     lazy var photosDirectory: URL = {
         let fm = FileManager.default
@@ -68,10 +71,6 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
         //pictureItem.view.layer?.backgroundColor = NSColor.red.cgColor
         pictureItem.setViewController(controller: self)
         return pictureItem
-    }
-
-    func printHello(){
-        
     }
     
     func collectionView(_ collectionView: NSCollectionView, validateDrop draggingInfo: NSDraggingInfo, proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>, dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionView.DropOperation>) -> NSDragOperation {
@@ -248,6 +247,35 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
         shadow.set()
         return shadow
     }
+    
+    
+    func setSelectedImage(selectImage: PhotoLayer){
+        selectedImage = selectImage
+        testImageView.image = selectImage.imageView?.image
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 extension Array {

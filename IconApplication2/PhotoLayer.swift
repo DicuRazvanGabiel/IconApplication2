@@ -10,11 +10,10 @@ import Cocoa
 
 class PhotoLayer: NSCollectionViewItem {
 
-    
-    
     @IBOutlet var image: NSImageView!
     @IBOutlet var label: NSTextField!
     var viewController: ViewController?
+    var idURL: String?
     
     let selectedBorderThickness: CGFloat = 3;
     
@@ -23,7 +22,8 @@ class PhotoLayer: NSCollectionViewItem {
             if isSelected{
                 view.layer?.borderWidth = selectedBorderThickness
                 view.shadow = setShadow()
-                viewController?.printHello()
+                viewController?.setSelectedImage(selectImage: self)
+                
             }else{
                 view.layer?.borderWidth = 0
                 view.shadow = NSShadow()
