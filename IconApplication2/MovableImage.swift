@@ -9,7 +9,10 @@
 import Cocoa
 
 class MovableImage: NSImageView {
+    
     var firstMouseDownPoint: NSPoint = NSZeroPoint
+    var idImage: Int?
+    var urlImage: URL?
     
     init() {
         super.init(frame: NSZeroRect)

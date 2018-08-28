@@ -11,13 +11,15 @@ import Cocoa
 class ViewController: NSViewController, NSCollectionViewDataSource, NSCollectionViewDelegate {
 
     
-    @IBOutlet var testImageView: NSImageView!
+    @IBOutlet var customView: NSView!
     @IBOutlet var collectionView: NSCollectionView!
-    
     @IBOutlet var imangesContainer: NSImageView!
+    @IBOutlet var checkBoxBorder: NSButton!
+    @IBOutlet var sliderBordeWeight: NSSlider!
     
     var itemsBeingDragged : Set<IndexPath>?
-    var photos = [URL]()
+    
+    var photos = [MovableImage]()
     
     var selectedImage: PhotoLayer?
     
@@ -39,16 +41,21 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
         do{
             let fm = FileManager.default
             let files = try fm.contentsOfDirectory(at: photosDirectory, includingPropertiesForKeys: nil)
-            
+            var indexXY = 1
             for file in files{
                 if file.pathExtension == "jpeg" || file.pathExtension == "png"{
-                    photos.append(file)
+                    let movImage = MovableImage()
+                    movImage.urlImage = file
+                    photos.append(movImage)
+                    addMovableImageToPreview(movableImageToAdd: movImage, indexOfXY: indexXY)
+                    indexXY += 1
                 }
             }
         } catch {
             print("Set up error")
         }
-        renderImagesToPreview()
+        customView.wantsLayer = true
+        customView.layer?.backgroundColor = NSColor(red: 1, green: 1, blue: 1, alpha: 0.5).cgColor
     }
 
     override var representedObject: Any? {
@@ -57,6 +64,17 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
         }
     }
     
+    @IBAction func onCheckBoxBorder(_ sender: Any) {
+        let imageViewOfMovableImage = selectedImage?.movableImage
+        imageViewOfMovableImage?.wantsLayer = true
+        if checkBoxBorder.state.rawValue == 1 {
+            imageViewOfMovableImage?.layer?.borderColor = NSColor.black.cgColor
+            imageViewOfMovableImage?.layer?.borderWidth = 10
+        }else{
+            imageViewOfMovableImage?.layer?.borderWidth = 0
+        }
+    }
+
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
@@ -65,11 +83,11 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
         let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "PhotoLayer"), for: indexPath)
         guard let pictureItem = item as? PhotoLayer else {return item}
         
-        let image = NSImage(contentsOf: photos[indexPath.item])
+        let image = NSImage(contentsOf: photos[indexPath.item].urlImage!)
         pictureItem.imageView?.image = image
         
-        //pictureItem.view.layer?.backgroundColor = NSColor.red.cgColor
         pictureItem.setViewController(controller: self)
+        pictureItem.movableImage = photos[indexPath.item]
         return pictureItem
     }
     
@@ -91,19 +109,16 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
     func collectionView(_ collectionView: NSCollectionView, acceptDrop draggingInfo: NSDraggingInfo, indexPath: IndexPath, dropOperation: NSCollectionView.DropOperation) -> Bool {
         
         if let moveItems = itemsBeingDragged?.sorted() {
-            
             //this is an internal drag
             performInternalDrag(with: moveItems, to: indexPath)
             
         } else {
-            
             //this is an external drag
             let pasteboard = draggingInfo.draggingPasteboard()
             guard let items = pasteboard.pasteboardItems else { return true }
             
             performExternalDrag(with: items, at: indexPath)
         }
-        
         return true
     }
     
@@ -151,13 +166,14 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
 //                targetIndex -= 1
 //            }
 //        }
-        renderImagesToPreview()
+        arrangementImagesToPreview()
     }
     
     func performExternalDrag(with items: [NSPasteboardItem], at indexPath: IndexPath) {
         let fm = FileManager.default
         
         //1 - loop over every item on the drag and drop pasteboard
+        var indexXY = 1
         for item in items {
             
             //2 - pull out the string containing the URL for this item
@@ -179,15 +195,20 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
             }
             
             //6 - update the array and collection view
-            photos.insert(destinationURL, at: indexPath.item)
+            let moveImage = MovableImage()
+            moveImage.urlImage = destinationURL
+            photos.insert(moveImage, at: indexPath.item)
+            
+            addMovableImageToPreview(movableImageToAdd: moveImage, indexOfXY: indexXY)
+            
             collectionView.insertItems(at: [indexPath])
+            indexXY += 1
         }
-        renderImagesToPreview()
     }
     
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
         
-        return photos[indexPath.item] as NSPasteboardWriting?
+        return photos[indexPath.item].urlImage as NSPasteboardWriting?
     }
     
     override func keyUp(with event: NSEvent) {
@@ -205,7 +226,7 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
                 
                 do {
                     //move this item to the trash and remove it from the array
-                    try fm.trashItem(at: photos[indexPath.item], resultingItemURL: nil)
+                    try fm.trashItem(at: photos[indexPath.item].urlImage!, resultingItemURL: nil)
                     photos.remove(at: indexPath.item)
                     
                 } catch {
@@ -215,26 +236,29 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
             //remove the items from the collection view
             collectionView.animator().deleteItems(at: collectionView.selectionIndexPaths)
         }
-        renderImagesToPreview()
+        arrangementImagesToPreview()
     }
     
-    func renderImagesToPreview(){
+    func addMovableImageToPreview(movableImageToAdd: MovableImage, indexOfXY: Int){
+        let imageImported = NSImage(byReferencing: movableImageToAdd.urlImage!)
+        movableImageToAdd.frame = NSRect(x:indexOfXY * 10, y:indexOfXY * 10, width: 1, height: 1)
+        if imageImported.size.width > imangesContainer.frame.width {
+            movableImageToAdd.frame.size = imangesContainer.frame.size
+        } else {
+            movableImageToAdd.frame.size = imageImported.size
+        }
+        movableImageToAdd.image = imageImported
+        arrangementImagesToPreview()
+    }
+    
+    func arrangementImagesToPreview(){
         for view in imangesContainer.subviews {
             view.removeFromSuperview()
         }
-        var indexOfXY = 1
-        for url in (0..<photos.count).reversed()  {
-            let movableImageToAdd = MovableImage()
-            let imageImported = NSImage(byReferencing: photos[url])
-            movableImageToAdd.frame = NSRect(x:indexOfXY * 10, y:indexOfXY * 10, width: 1, height: 1)
-            if imageImported.size.width > imangesContainer.frame.width {
-                movableImageToAdd.frame.size = imangesContainer.frame.size
-            } else {
-                movableImageToAdd.frame.size = imageImported.size
-            }
-            movableImageToAdd.image = imageImported
+        
+        for index in (0..<photos.count).reversed()  {
+            let movableImageToAdd = photos[index]
             imangesContainer.addSubview(movableImageToAdd)
-            indexOfXY += 1
         }
     }
     
@@ -248,10 +272,8 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
         return shadow
     }
     
-    
     func setSelectedImage(selectImage: PhotoLayer){
         selectedImage = selectImage
-        testImageView.image = selectImage.imageView?.image
     }
     
     

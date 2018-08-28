@@ -13,7 +13,7 @@ class PhotoLayer: NSCollectionViewItem {
     @IBOutlet var image: NSImageView!
     @IBOutlet var label: NSTextField!
     var viewController: ViewController?
-    var idURL: String?
+    var movableImage = MovableImage()
     
     let selectedBorderThickness: CGFloat = 3;
     
