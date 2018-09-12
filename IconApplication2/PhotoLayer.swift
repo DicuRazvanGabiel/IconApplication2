@@ -45,7 +45,6 @@ class PhotoLayer: NSCollectionViewItem {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true

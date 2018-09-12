@@ -9,8 +9,8 @@
 import Cocoa
 
 class ViewController: NSViewController, NSCollectionViewDataSource, NSCollectionViewDelegate {
-
     
+    @IBOutlet var tabViewController: NSTabView!
     @IBOutlet var customView: NSView!
     @IBOutlet var collectionView: NSCollectionView!
     @IBOutlet var imangesContainer: NSImageView!
@@ -276,10 +276,17 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
         selectedImage = selectImage
     }
     
+    @IBAction func changeToBackgorundView(_ sender: NSView){
+        tabViewController.selectTabViewItem(at: 0)
+    }
     
+    @IBAction func changeToImageView(_ sender: NSView){
+        tabViewController.selectTabViewItem(at: 1)
+    }
     
-    
-    
+    @IBAction func changeToTextView(_ sender: NSView){
+        tabViewController.selectTabViewItem(at: 2)
+    }
     
     
     

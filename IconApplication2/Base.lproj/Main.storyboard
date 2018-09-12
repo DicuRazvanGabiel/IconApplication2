@@ -690,19 +690,95 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <toolbar key="toolbar" implicitIdentifier="C63EA4B2-AD83-4FD4-A490-1D48B0CC2DC9" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="BuO-AT-fk4">
+                        <toolbar key="toolbar" implicitIdentifier="C63EA4B2-AD83-4FD4-A490-1D48B0CC2DC9" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="BuO-AT-fk4">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="6QT-T3-h5s"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="C5O-HO-itl"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="Rf5-zN-vM7"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="xDa-p7-gqu"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="T0E-gc-K8G"/>
+                                <toolbarItem implicitItemIdentifier="D5E91960-60DC-4259-8D8D-558864745F8A" label="" paletteLabel="Background" id="CEM-bk-x6d">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="127" height="20"/>
+                                    <size key="maxSize" width="142" height="45"/>
+                                    <button key="view" verticalHuggingPriority="750" id="Inw-Yx-gpB">
+                                        <rect key="frame" x="0.0" y="14" width="142" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Background" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" id="thN-bK-GPb">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="changeToBackgorundView:" target="Oky-zY-oP4" id="k2z-bF-BH8"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="AAF8EF99-434D-4273-A944-D7ADE2D3B9BE" label="" paletteLabel="Image" id="Gbb-FE-w1g">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="127" height="25"/>
+                                    <size key="maxSize" width="127" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="F5e-z6-ssf">
+                                        <rect key="frame" x="0.0" y="14" width="127" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Image" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BGB-0N-UtH">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="changeToImageView:" target="Oky-zY-oP4" id="Dak-Me-eAW"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="2D7F3BF0-CF56-47CC-8982-2F25DCB3C55B" label="" paletteLabel="Text" id="fDY-EH-4io">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="127" height="25"/>
+                                    <size key="maxSize" width="127" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="qmG-SH-qfz">
+                                        <rect key="frame" x="0.0" y="14" width="127" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Text" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Puk-4K-dEY">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="changeToTextView:" target="Oky-zY-oP4" id="TwZ-PH-V71"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="FE4AA723-F345-4357-831B-27A47E53CBA7" label="" paletteLabel="Import" id="7eg-Jh-0fj">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="127" height="25"/>
+                                    <size key="maxSize" width="127" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="0tL-v4-G89">
+                                        <rect key="frame" x="0.0" y="14" width="127" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Import" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fhA-iN-0hm">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="D36ED3D5-5CEF-4F65-8310-3B9E3C6C9CBD" label="" paletteLabel="" id="dz2-NC-G9I">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="127" height="25"/>
+                                    <size key="maxSize" width="127" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="XJn-Th-Lwu">
+                                        <rect key="frame" x="0.0" y="14" width="127" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Export" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ng2-9I-p3H">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="6QT-T3-h5s"/>
-                                <toolbarItem reference="C5O-HO-itl"/>
+                                <toolbarItem reference="7eg-Jh-0fj"/>
                                 <toolbarItem reference="T0E-gc-K8G"/>
-                                <toolbarItem reference="Rf5-zN-vM7"/>
+                                <toolbarItem reference="CEM-bk-x6d"/>
+                                <toolbarItem reference="xDa-p7-gqu"/>
+                                <toolbarItem reference="Gbb-FE-w1g"/>
+                                <toolbarItem reference="xDa-p7-gqu"/>
+                                <toolbarItem reference="fDY-EH-4io"/>
+                                <toolbarItem reference="T0E-gc-K8G"/>
+                                <toolbarItem reference="dz2-NC-G9I"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -729,7 +805,7 @@
                                 <rect key="frame" x="337" y="20" width="698" height="720"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1wR-My-BAx">
-                                        <rect key="frame" x="-1" y="20" width="700" height="700"/>
+                                        <rect key="frame" x="-1" y="0.0" width="700" height="720"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="XNr-cW-WZ6"/>
                                     </imageView>
@@ -739,8 +815,8 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="698" id="BTW-HS-5xv"/>
                                 </constraints>
                             </customView>
-                            <tabView translatesAutoresizingMaskIntoConstraints="NO" id="Ps0-Zk-fWu">
-                                <rect key="frame" x="3" y="10" width="331" height="736"/>
+                            <tabView type="noTabsNoBorder" initialItem="Ugr-Lk-TAZ" translatesAutoresizingMaskIntoConstraints="NO" id="Ps0-Zk-fWu">
+                                <rect key="frame" x="10" y="20" width="317" height="720"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="317" id="98k-vc-BzV"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="696" id="OGy-tZ-rEK"/>
@@ -749,13 +825,13 @@
                                 </constraints>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
-                                    <tabViewItem label="Background" identifier="" id="Ugr-Lk-TAZ">
+                                    <tabViewItem label="Background" id="Ugr-Lk-TAZ">
                                         <view key="view" id="NQo-vw-z7C">
-                                            <rect key="frame" x="10" y="33" width="311" height="666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="317" height="720"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <box fixedFrame="YES" title="Bacground Color" translatesAutoresizingMaskIntoConstraints="NO" id="UbF-pw-YKB">
-                                                    <rect key="frame" x="14" y="470" width="283" height="120"/>
+                                                    <rect key="frame" x="14" y="524" width="283" height="120"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="kzz-NA-wtG">
                                                         <rect key="frame" x="2" y="2" width="279" height="103"/>
@@ -801,7 +877,7 @@
                                                     </view>
                                                 </box>
                                                 <box fixedFrame="YES" title="Corner Curvature" translatesAutoresizingMaskIntoConstraints="NO" id="exs-C9-250">
-                                                    <rect key="frame" x="14" y="378" width="283" height="88"/>
+                                                    <rect key="frame" x="14" y="432" width="283" height="88"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="FLE-1W-EsV">
                                                         <rect key="frame" x="2" y="2" width="279" height="71"/>
@@ -816,7 +892,7 @@
                                                     </view>
                                                 </box>
                                                 <box fixedFrame="YES" title="Stroke" translatesAutoresizingMaskIntoConstraints="NO" id="O9h-AT-178">
-                                                    <rect key="frame" x="14" y="236" width="283" height="125"/>
+                                                    <rect key="frame" x="14" y="290" width="283" height="125"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="AsI-l5-FSh">
                                                         <rect key="frame" x="2" y="2" width="279" height="108"/>
@@ -862,7 +938,7 @@
                                                     </view>
                                                 </box>
                                                 <box fixedFrame="YES" title="Shadow" translatesAutoresizingMaskIntoConstraints="NO" id="K3r-Ag-eQa">
-                                                    <rect key="frame" x="14" y="44" width="283" height="188"/>
+                                                    <rect key="frame" x="14" y="98" width="283" height="188"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="LwX-uT-LBo">
                                                         <rect key="frame" x="2" y="2" width="279" height="171"/>
@@ -926,11 +1002,11 @@
                                     </tabViewItem>
                                     <tabViewItem label="Image" identifier="" id="QfS-4X-bUW">
                                         <view key="view" id="Vvt-93-lAi">
-                                            <rect key="frame" x="10" y="33" width="311" height="690"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="317" height="720"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <box fixedFrame="YES" title="Shadow" translatesAutoresizingMaskIntoConstraints="NO" id="a2M-Hj-g9f">
-                                                    <rect key="frame" x="14" y="108" width="283" height="188"/>
+                                                    <rect key="frame" x="14" y="138" width="283" height="188"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="RBR-B9-yP2">
                                                         <rect key="frame" x="2" y="2" width="279" height="171"/>
@@ -990,7 +1066,7 @@
                                                     </view>
                                                 </box>
                                                 <box fixedFrame="YES" title="Stroke" translatesAutoresizingMaskIntoConstraints="NO" id="vYK-yW-LM0">
-                                                    <rect key="frame" x="14" y="300" width="283" height="132"/>
+                                                    <rect key="frame" x="14" y="330" width="283" height="132"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="0x0-ZF-82j">
                                                         <rect key="frame" x="2" y="2" width="279" height="115"/>
@@ -1036,7 +1112,7 @@
                                                     </view>
                                                 </box>
                                                 <box fixedFrame="YES" title="Transform" translatesAutoresizingMaskIntoConstraints="NO" id="fJn-Mi-Dde">
-                                                    <rect key="frame" x="14" y="436" width="283" height="137"/>
+                                                    <rect key="frame" x="14" y="466" width="283" height="137"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="lEg-bI-uPy">
                                                         <rect key="frame" x="2" y="2" width="279" height="120"/>
@@ -1102,13 +1178,13 @@
                                             </subviews>
                                         </view>
                                     </tabViewItem>
-                                    <tabViewItem label="Text" identifier="" id="Hl0-YA-Oeg">
+                                    <tabViewItem label="Text" identifier="1" id="Hl0-YA-Oeg">
                                         <view key="view" id="ZxC-wL-7zc">
-                                            <rect key="frame" x="10" y="33" width="311" height="670"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="317" height="720"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <box fixedFrame="YES" title="Shadow" translatesAutoresizingMaskIntoConstraints="NO" id="rny-gI-ltD">
-                                                    <rect key="frame" x="9" y="2" width="292" height="188"/>
+                                                    <rect key="frame" x="9" y="52" width="292" height="188"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="7Na-L5-mHB">
                                                         <rect key="frame" x="2" y="2" width="288" height="171"/>
@@ -1168,7 +1244,7 @@
                                                     </view>
                                                 </box>
                                                 <box fixedFrame="YES" title="Stroke" translatesAutoresizingMaskIntoConstraints="NO" id="sbp-p6-MmN">
-                                                    <rect key="frame" x="9" y="200" width="292" height="132"/>
+                                                    <rect key="frame" x="9" y="250" width="292" height="132"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="TQH-Qo-WOK">
                                                         <rect key="frame" x="2" y="2" width="288" height="115"/>
@@ -1214,12 +1290,12 @@
                                                     </view>
                                                 </box>
                                                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwO-z8-BCZ">
-                                                    <rect key="frame" x="57" y="348" width="70" height="23"/>
+                                                    <rect key="frame" x="57" y="398" width="70" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </colorWell>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oee-qf-Qql">
-                                                    <rect key="frame" x="14" y="351" width="37" height="17"/>
+                                                    <rect key="frame" x="14" y="401" width="37" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Color" id="Brv-q3-T9m">
                                                         <font key="font" metaFont="system"/>
@@ -1228,7 +1304,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XEg-pZ-VnZ">
-                                                    <rect key="frame" x="142" y="346" width="159" height="26"/>
+                                                    <rect key="frame" x="142" y="396" width="159" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TEg-lc-VaA" id="skb-wx-44M">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1340,6 +1416,7 @@
                         <outlet property="collectionView" destination="OFt-O6-yY9" id="wc9-qe-Tly"/>
                         <outlet property="customView" destination="Xfs-qd-4Gj" id="kIN-c5-FSv"/>
                         <outlet property="imangesContainer" destination="1wR-My-BAx" id="RcI-xa-9lN"/>
+                        <outlet property="tabViewController" destination="Ps0-Zk-fWu" id="AMJ-kI-RzH"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
