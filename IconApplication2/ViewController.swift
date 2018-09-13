@@ -288,9 +288,49 @@ class ViewController: NSViewController, NSCollectionViewDataSource, NSCollection
         tabViewController.selectTabViewItem(at: 2)
     }
     
+    @IBAction func exportImage(_ sender: NSView){
+        let imageToExport = generateImageToExport()
+        let image =  imageToExport
+        guard let tiffData = image.tiffRepresentation else { return }
+        guard let imageRep = NSBitmapImageRep(data: tiffData) else { return }
+        guard let png = imageRep.representation(using: .png, properties: [:]) else { return }
+        let panel = NSSavePanel()
+        panel.allowedFileTypes = ["png"]
+        panel.begin { result in
+            if result == NSApplication.ModalResponse.OK {
+                guard let url = panel.url else { return }
+                do {
+                    try png.write(to: url)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        
+    }
     
+    func generateImageToExport() -> NSImage{
+        let image = NSImage(size: CGSize(width: 700, height: 720), flipped: false) { [unowned self] rect in
+            
+            guard let ctx = NSGraphicsContext.current?.cgContext else { return false }
+            
+            self.drawPhotosToExport(context: ctx, rect: rect)
+            
+            return true
+        }
+        
+        return image
+    }
     
-    
+    func drawPhotosToExport(context: CGContext, rect: CGRect){
+        
+        for index in (0..<photos.count).reversed()  {
+            let image = photos[index].image
+            let imageOrigin = photos[index].frame.origin
+            image?.draw(at: imageOrigin, from: .zero, operation: .sourceOver, fraction: 1)
+            //image?.draw(in: rect, from: imageOrigin, operation: .sourceOver, fraction: 1)
+        }
+    }
     
     
     
@@ -321,4 +361,3 @@ extension Array {
         }
     }
 }
-
