@@ -1334,7 +1334,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <clipView key="contentView" ambiguous="YES" id="GrR-FJ-cGp">
                                                         <rect key="frame" x="1" y="1" width="265" height="232"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textView ambiguous="YES" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="wIg-ef-Cnb">
                                                                 <rect key="frame" x="0.0" y="0.0" width="265" height="232"/>
@@ -1352,7 +1352,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="oxH-dM-IBi">
-                                                        <rect key="frame" x="1" y="1" width="15" height="0.0"/>
+                                                        <rect key="frame" x="266" y="1" width="15" height="232"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
